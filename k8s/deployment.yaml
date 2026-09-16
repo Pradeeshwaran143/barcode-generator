@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: barcode-deployment
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: barcode
+
+  template:
+    metadata:
+      labels:
+        app: barcode
+
+    spec:
+      containers:
+        - name: barcode-container
+          image: barcode-generator:latest
+          imagePullPolicy: Never
+
+          ports:
+            - containerPort: 80
