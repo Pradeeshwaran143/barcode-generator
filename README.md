@@ -63,3 +63,5 @@ barcode-generator/
 ├── Jenkinsfile
 ├── README.md
 └── .gitignore
+
+CI/CD automatic trigger tested successfully.
