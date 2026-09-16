@@ -8,13 +8,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                echo 'Checking project source code...'
-                checkout scm
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
@@ -49,6 +42,7 @@ pipeline {
         stage('Verify Kubernetes') {
             steps {
                 echo 'Checking Kubernetes deployment...'
+                sh 'kubectl rollout status deployment/barcode-deployment'
                 sh 'kubectl get pods'
                 sh 'kubectl get svc'
             }
